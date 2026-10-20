@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mydigitalspace</title>
+    
+    <style>
+        /* --- CORE STYLE --- */
+        body {
+            cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABuElEQVRYhb2XPW7CMBTH/64YeofGG6I36IbUvYXjtByBXAeyF4mNG/CxPSOxs3RzB/JSx3Fi48T8pShOlPj9/L6ciMNqqxGgyXwqQp67W4fVVjf0c/w/l0coqC1arjUt19oes0bVaHOqv2lfRxp/+foANqfb+O21ui8XMwEAT72t+FQuhI3bCgI4Xi/JcsAJcLxeakescbmYifNuX7t33u3B7gfMHLDkM0pEtWSSUjqfl4uZ4PjbxjsBfMazLGsFsmEYwjbuBLjb5WWSZe9jAIBSqoIxQVzGAWA0mU+FWeN9ky07/d5Axs9OkEFERM3mZTYxbmRaayLSdr6YiiLjCXm1KN3fJqVUNba9Ee0aItINALN7OqAYxIToBQAAVTW4WncARHQrjk0sBuYF9NoLpJTCjG8MxCCbkVKq6W5PYtqNrD5hXmiVF9oet6mzLD1yGud6VnlR1XUqCHcIPHt4m2LyYbAPktiqcL6k8kKbqz/v9si+P4MMuHbKKHH8fbF3AfRKQhsiBv4eiJj5B4VI+lUcUhVp/nZKNTYsh5J6IKQ00/+YoDsUSUPA6grFQwC6IB4SAqA9H/4AxuE7WjIWRygAAAAASUVORK5CYII=) 0 0, auto;
+            
+            background-color: #121214; 
+            color: #e0dcd3;
+            font-family: 'Georgia', serif;
+            padding: 20px;
+            margin: 0;
+        }
+
+        a {
+            color: #9d84b7;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- LAYOUT GRID --- */
+        .wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .main-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        /* --- COMPONENTS --- */
+        .nav-menu {
+            margin-top: 15px;
+            padding-left: 0;
+            list-style-type: "✧ ";
+        }
+
+        .nav-menu li {
+            margin-bottom: 10px;
+        }
+
+        /* --- CD PLAYER RETRO STYLING --- */
+        #musicplayer {
+            margin-top: 30px;
+            border: 1px solid #443552;
+            background: #1a1622;
+            font-family: monospace;
+            font-size: 0.85em;
+        }
+
+        .title-color {
+            background: #443552;
+            color: #fff;
+            padding: 4px 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .actual-title {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: bold;
+        }
+
+        .title-bar-controls {
+            display: flex;
+            gap: 3px;
+        }
+
+        .window-button {
+            width: 12px;
+            height: 12px;
+            background: #221a2b;
+            border: 1px solid #5c476f;
+            cursor: pointer;
+        }
+
+        .player-flex {
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .player-icon {
+            width: 32px;
+            height: 32px;
+            background: url('https://loveberry.nekoweb.org/assets/musicplayer/player-icon.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.7;
+        }
+
+        .player-main {
+            flex: 1;
+        }
+
+        .track-select {
+            width: 100%;
+            background: #221a2b;
+            color: #d2c4f9;
+            border: 1px solid #443552;
+            padding: 2px;
+            font-family: monospace;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .seeking {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 5px;
+            font-size: 0.8em;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+
+        .seek_slider {
+            flex: 1;
+            accent-color: #9d84b7;
+            height: 4px;
+            cursor: pointer;
+        }
+
+        .player-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .player-buttons .window-button {
+            width: auto;
+            height: auto;
+            background: #221a2b;
+            border: 1px solid #443552;
+            color: #e0dcd3;
+            padding: 3px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .player-buttons svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* --- GUESTBOOK --- */
+        .guestbook-box {
+            margin-top: 30px;
+            padding: 15px;
+            border: 1px dashed #444;
+            background: #161618;
+        }
+
+        .guestbook-box input, .guestbook-box textarea {
+            width: 100%;
+            background: #222;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            font-family: monospace;
+        }
+
+        .guestbook-box button {
+            background: #443552;
+            color: #fff;
+            border: none;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+
+        .guestbook-box button:hover {
+            background: #5c476f;
+        }
+    </style>
+</head>
+<body>
+
+    <header style="text-align: center; margin-bottom: 40px; padding-top: 20px;">
+        <h1>FA's digital cabinet of curiosities</h1>
+        <hr style="border: 1px dashed #444; width: 80%; margin: 20px auto;">
+    </header>
+
+    <div class="wrapper">
+        
+        <aside class="sidebar">
+            <h3>Index Lore</h3>
+            <ul class="nav-menu">
+                <li><a href="index.html">home</a></li>
+                <li><a href="linguistics.html">linguistics</a></li>
+                <li><a href="literature.html">manuscript</a></li>
+                <li><a href="scrapbook.html">scrapbook</a></li>
+                <li><a href="spiritual.html">esoterica</a></li>
+            </ul>
+     
+            <div style="margin-top: 30px; border: 1px solid #443552; background: #1a1622; font-family: monospace; font-size: 0.85em;">
+    
+                <div style="background: #443552; color: #fff; padding: 4px 8px; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 5px; font-weight: bold;">
+                        <img src="https://loveberry.nekoweb.org/assets/musicplayer/player-icon.png" alt="" height="14px" width="14px"> CD Player.exe
+                    </div>
+                    <div style="display: flex; gap: 3px;">
+                        <div style="width: 12px; height: 12px; background: #221a2b; border: 1px solid #5c476f;"></div>
+                        <div style="width: 12px; height: 12px; background: #221a2b; border: 1px solid #5c476f;"></div>
+                        <div style="width: 12px; height: 12px; background: #221a2b; border: 1px solid #5c476f;"></div>
+                    </div>
+                </div>
+            
+                <div style="padding: 8px; background: #16121e;">
+                    <iframe width="100%" height="220" 
+                            src="https://www.youtube.com/embed/videoseries?list=PLy7p8OUlvTUcTszHf3HHNnl8Sc9ZoCRy4" 
+                            title="YouTube playlist player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen 
+                            style="border: 1px solid #443552; border-radius: 4px;">
+                    </iframe>
+                </div>
+                
+                <div style="background: #221a2b; padding: 4px 8px; color: #888; font-size: 0.8em; border-top: 1px solid #443552; text-align: center;">
+                    ✧ Tracklist Mode Active ✧
+                </div>
+            </div>
+
+            <div class="guestbook-box">
+                <h4 style="margin-top: 0; color: #9d84b7;">✧ sign the guestbook ✧</h4>
+                <form>
+                    <input type="text" placeholder="Name/Alias" required>
+                    <textarea rows="3" placeholder="Leave a message..." required></textarea>
+                    <button type="submit">Leave a mark</button>
+                </form>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h2>about me</h2>
+            <h3>why i created this webpage</h3>
+            
+            <p>i have created this page to document what is going on inside my mind.
+                i used to use instagram for that, but it has turned into this
+                annoying ai slop with a painfully unaccurate algorythm that makes you scroll
+                without even learning anything. so, i had to make sure i have my own space 
+                where i can control what i publish without worrying too much about ai stealing
+                my own productions.
+                that being said, basically, what you'll find is a complition of artsy and sciencey stuff,
+                and some random photos of me and my life.</p>
+
+            <h4>fun facts about me</h4>
+            <p>✧ 26 years old</p>
+               <p>✧ linguist</p>
+               <p>✧ occasionally brings together words</p>
+               <p>✧ insists on drawing stuff eventhough is terrible at it</p>
+               <p>✧ cat lover</p> 
+               <p>✧ based in Ankara, Turkey</p>
+
+          
+            <p> Ps. feel free to click through the items in the <strong>Index Lore</strong>. 
+                you will encounter "rooms" built around linguistics; 
+                my short stories, essays, poems; photos and videos i take, and a little bit of 
+                occult/esoteric stuff.</p>
+            
+            <p>please don't leave without writing something in the guestbook on the left! i'd love to
+                hear your thoughts, ideas, criticisms, or suggestions!
+            </p>
+        </main>
+
+    </div>
+
+    <footer style="text-align: center; margin-top: 60px; padding: 20px; font-size: 0.8em; color: #555;">
+        <p>©FA 2026 | hand-woven with love</p>
+    </footer>
+
+</body>
+</html>
