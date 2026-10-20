@@ -26,6 +26,36 @@
             text-decoration: underline;
         }
 
+        /* --- LANGUAGE SWITCHER --- */
+.lang-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: monospace;
+    font-size: 0.9em;
+    background: #1a1622;
+    padding: 5px 10px;
+    border: 1px dashed #443552;
+    
+    /* These three lines lock the layout in place */
+    display: flex;
+    gap: 8px; 
+    align-items: center;
+    width: auto; 
+}
+
+.lang-switcher a {
+    color: #9d84b7;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.lang-switcher a.active {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
         /* --- LAYOUT GRID --- */
         .wrapper {
             display: flex;
@@ -196,17 +226,23 @@
         }
     </style>
 </head>
+
+</div>
 <body>
+    <div class="lang-switcher">
+        <a href="index.html" class="active">EN</a> | 
+        <a href="index_tr.html">TR</a>
+    </div>
 
     <header style="text-align: center; margin-bottom: 40px; padding-top: 20px;">
-        <h1>FA's digital cabinet of curiosities</h1>
+        <h1>FA's digital cabin of curiosities</h1>
         <hr style="border: 1px dashed #444; width: 80%; margin: 20px auto;">
     </header>
 
     <div class="wrapper">
         
         <aside class="sidebar">
-            <h3>Index Lore</h3>
+            <h3>index lore</h3>
             <ul class="nav-menu">
                 <li><a href="index.html">home</a></li>
                 <li><a href="linguistics.html">linguistics</a></li>
@@ -258,14 +294,17 @@
             <h2>about me</h2>
             <h3>why i created this webpage</h3>
             
-            <p>i have created this page to document what is going on inside my mind.
-                i used to use instagram for that, but it has turned into this
-                annoying ai slop with a painfully unaccurate algorythm that makes you scroll
-                without even learning anything. so, i had to make sure i have my own space 
-                where i can control what i publish without worrying too much about ai stealing
-                my own productions.
-                that being said, basically, what you'll find is a complition of artsy and sciencey stuff,
-                and some random photos of me and my life.</p>
+            <p>i created this page to document what goes on inside my mind.</p>
+
+                <p>i used to do that on instagram, but it has turned into an 
+                endless stream of ai-slop, powered by a painfully 
+                inaccurate algorithm that keeps you scrolling without actually 
+                teaching you anything. so, i decided to create my own space: 
+                a place where i can control what i publish without worrying too 
+                much about ai scraping my work.</p>
+                
+                <p>that being said, you'll mostly find a mix of artsy and sciencey 
+                    stuff here, along with some random photos from my life.</p>
 
             <h4>fun facts about me</h4>
             <p>✧ 26 years old</p>
@@ -289,7 +328,7 @@
     </div>
 
     <footer style="text-align: center; margin-top: 60px; padding: 20px; font-size: 0.8em; color: #555;">
-        <p>©FA 2026 | hand-woven with love</p>
+        <p>©FA 2026 | hand-made with love</p>
     </footer>
 
 </body>
